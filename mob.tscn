@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsuhiudwpklx2"]
+
+[ext_resource type="PackedScene" uid="uid://dovqjqnc7t37o" path="res://art/mob.glb" id="1_4b47l"]
+[ext_resource type="Script" path="res://mob.cs" id="1_5bvbe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vfu6i"]
+size = Vector3(1.50272, 0.999456, 1.61205)
+
+[sub_resource type="Animation" id="Animation_yxu6e"]
+resource_name = "float"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Character:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.5, 0.7, 1.2),
+"transitions": PackedFloat32Array(0.435275, 0.406126, 1.93187, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.65, 0), Vector3(0, 0.505556, 0), Vector3(0, 0.35, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Character:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.5, 1.2),
+"transitions": PackedFloat32Array(0.435275, 0.406126, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.139626, 0, 0), Vector3(-0.15708, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vpxhi"]
+_data = {
+"float": SubResource("Animation_yxu6e")
+}
+
+[node name="Mob" type="CharacterBody3D" groups=["mob"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_5bvbe")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Character" parent="Pivot" instance=ExtResource("1_4b47l")]
+transform = Transform3D(1, 0, 0, 0, 0.987688, 0.156435, 0, -0.156435, 0.987688, 0, 0.35, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.235596, 0.111763)
+shape = SubResource("BoxShape3D_vfu6i")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.075869, 0.258218, 0.263011)
+aabb = AABB(-1.30418, -0.634691, -1.66286, 2.58589, 1.26938, 3.32573)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "float"
+libraries = {
+"": SubResource("AnimationLibrary_vpxhi")
+}
