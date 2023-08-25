@@ -13,6 +13,8 @@ public partial class main : Node
 
         GetNode<Control>("UserInterface/Retry").Hide();
         GetNode<player>("Player").Hit += OnPlayerHit;
+
+        GetWindow().Size = new Vector2I(1366, 720);
     }
 
     public override void _UnhandledInput(InputEvent @event)

@@ -50,6 +50,12 @@ script = ExtResource("1_5bvbe")
 [node name="Character" parent="Pivot" instance=ExtResource("1_4b47l")]
 transform = Transform3D(1, 0, 0, 0, 0.987688, 0.156435, 0, -0.156435, 0.987688, 0, 0.35, 0)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.33171, 0)
+light_color = Color(0.152941, 1, 0, 1)
+light_energy = 1.464
+light_size = 0.074
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.235596, 0.111763)
 shape = SubResource("BoxShape3D_vfu6i")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://crilki0umwi2v"]
+[gd_scene load_steps=13 format=3 uid="uid://crilki0umwi2v"]
 
 [ext_resource type="Script" path="res://main.cs" id="1_6u7ky"]
 [ext_resource type="PackedScene" uid="uid://bx2r0tb63pni3" path="res://player.tscn" id="1_d07mq"]
 [ext_resource type="PackedScene" uid="uid://dsuhiudwpklx2" path="res://mob.tscn" id="2_0c1am"]
 [ext_resource type="FontFile" uid="uid://dxyjqmc4f6fgg" path="res://fonts/Montserrat-Medium.ttf" id="4_0lob5"]
 [ext_resource type="Script" path="res://ScoreLabel.cs" id="5_lshh8"]
+[ext_resource type="Script" path="res://FPS.cs" id="6_ppsoh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t8yso"]
 size = Vector3(60, 2, 60)
@@ -27,7 +28,7 @@ point_count = 5
 
 [sub_resource type="Theme" id="Theme_inayu"]
 default_font = ExtResource("4_0lob5")
-default_font_size = 22
+default_font_size = 16
 
 [node name="Main" type="Node"]
 script = ExtResource("1_6u7ky")
@@ -45,8 +46,10 @@ shape = SubResource("BoxShape3D_t8yso")
 mesh = SubResource("BoxMesh_fdbl1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.18076, 0.983527, 0, -0.983527, -0.18076, -0.00453496, 13.9714, 0.00245631)
-light_color = Color(0.121569, 0, 1, 1)
+transform = Transform3D(-0.35702, -0.80924, -0.466548, -0.106765, -0.46084, 0.881038, -0.927975, 0.364359, 0.0781306, -26.5059, 16.9642, -0.896954)
+visible = false
+light_color = Color(1, 0.823529, 0, 1)
+light_energy = 0.304
 shadow_enabled = true
 sky_mode = 1
 
@@ -101,16 +104,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_inayu")
 
-[node name="ScoreLabel" type="Label" parent="UserInterface"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 24.0
-offset_right = 82.0
-offset_bottom = 50.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Score: 0"
-script = ExtResource("5_lshh8")
-
 [node name="Retry" type="ColorRect" parent="UserInterface"]
 layout_mode = 1
 anchors_preset = 15
@@ -127,10 +120,30 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -105.5
-offset_top = -15.5
-offset_right = 105.5
-offset_bottom = 15.5
+offset_left = -77.5
+offset_top = -12.0
+offset_right = 77.5
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Press enter to retry"
+
+[node name="ScoreLabel" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 93.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Score: 0"
+script = ExtResource("5_lshh8")
+
+[node name="FPS" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 6.0
+offset_right = 320.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 11
+text = "FPS"
+script = ExtResource("6_ppsoh")

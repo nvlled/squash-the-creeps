@@ -23,6 +23,7 @@ MusicPlayer="*res://music_player.tscn"
 
 window/size/viewport_width=320
 window/size/viewport_height=240
+window/size/mode=3
 window/size/borderless=true
 window/stretch/mode="viewport"
 
@@ -72,10 +73,6 @@ jump={
 3d_physics/layer_1="player"
 3d_physics/layer_2="enemies"
 3d_physics/layer_3="world"
-
-[physics]
-
-common/max_physics_steps_per_frame=10
 
 [rendering]
 
